@@ -1,8 +1,8 @@
-package com.symon.export;
+package com.ssymon.export.db;
 
-import com.symon.export.config.AppConfig;
-import com.symon.export.exporter.DatabaseExporter;
-import com.symon.export.exporter.MySQLDatabaseExporter;
+import com.ssymon.export.db.config.AppConfig;
+import com.ssymon.export.db.exporter.DatabaseExporter;
+import com.ssymon.export.db.exporter.MySQLDatabaseExporter;
 import lombok.extern.slf4j.Slf4j;
 import org.yaml.snakeyaml.Yaml;
 import org.yaml.snakeyaml.constructor.Constructor;

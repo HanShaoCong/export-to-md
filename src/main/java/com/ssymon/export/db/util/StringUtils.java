@@ -1,4 +1,4 @@
-package com.symon.export.util;
+package com.ssymon.export.db.util;
 
 public class StringUtils {
 

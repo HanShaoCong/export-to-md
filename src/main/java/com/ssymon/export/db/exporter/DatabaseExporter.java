@@ -1,4 +1,4 @@
-package com.symon.export.exporter;
+package com.ssymon.export.db.exporter;
 
 public interface DatabaseExporter {
 

@@ -1,4 +1,4 @@
-package com.symon.export.constant;
+package com.ssymon.export.db.constant;
 
 public final class PatternConstant {
 

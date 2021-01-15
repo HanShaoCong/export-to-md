@@ -1,4 +1,4 @@
-package com.symon.export.domain;
+package com.ssymon.export.db.domain;
 
 import lombok.Data;
 

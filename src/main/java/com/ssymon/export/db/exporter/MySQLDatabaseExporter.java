@@ -1,6 +1,6 @@
-package com.symon.export.exporter;
+package com.ssymon.export.db.exporter;
 
-import com.symon.export.config.AppConfig;
+import com.ssymon.export.db.config.AppConfig;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

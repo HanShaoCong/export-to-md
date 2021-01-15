@@ -1,4 +1,4 @@
-package com.symon.export.config;
+package com.ssymon.export.db.config;
 
 import lombok.Data;
 
