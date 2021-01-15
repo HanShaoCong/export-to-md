@@ -1,12 +1,15 @@
-# export-md
+# export-db
 
 #### 介绍
-MySQL数据库信息导出到Markdown
+数据库字典导出到Markdown
+支持MySql数据库，其他类型数据库可自行扩展
 
 #### 使用说明
 
-- 配置数据库 - application.yml
+- 配置数据库 
+> application.yml
 ```java
+# 数据库信息
 db:
   driver: com.mysql.cj.jdbc.Driver
   url: jdbc:mysql://localhost:3306/test?useSSL=true&verifyServerCertificate=false&serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=CONVERT_TO_NULL&allowMultiQueries=true
@@ -22,22 +25,14 @@ export:
 
 ```
 
-- 运行 - ExportApplication.java
+- 执行程序
+> 程序入口 ExportApplication.java 执行main函数
+```java
+public class ExportApplication {
 
-
-#### 参与贡献
-
-1.  Fork 本仓库
-2.  新建 Feat_xxx 分支
-3.  提交代码
-4.  新建 Pull Request
-
-
-#### 特技
-
-1.  使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2.  Gitee 官方博客 [blog.gitee.com](https://blog.gitee.com)
-3.  你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解 Gitee 上的优秀开源项目
-4.  [GVP](https://gitee.com/gvp) 全称是 Gitee 最有价值开源项目，是综合评定出的优秀开源项目
-5.  Gitee 官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6.  Gitee 封面人物是一档用来展示 Gitee 会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+    public static void main(String[] args) {
+        DatabaseExporter exporter = new MySQLDatabaseExporter(ConfigUtil.loadConfig());
+        exporter.export();
+    }
+}
+```

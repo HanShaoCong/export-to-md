@@ -1,8 +1,8 @@
 package com.ssymon.export.db.util;
 
-public class StringUtils {
+public class StringUtil {
 
-    private StringUtils() {
+    private StringUtil() {
 
     }
 

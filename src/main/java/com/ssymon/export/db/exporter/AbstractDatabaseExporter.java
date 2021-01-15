@@ -5,7 +5,7 @@ import com.ssymon.export.db.config.AppConfig;
 import com.ssymon.export.db.constant.PatternConstant;
 import com.ssymon.export.db.domain.Column;
 import com.ssymon.export.db.domain.Table;
-import com.ssymon.export.db.util.StringUtils;
+import com.ssymon.export.db.util.StringUtil;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.File;
@@ -33,13 +33,15 @@ public abstract class AbstractDatabaseExporter implements DatabaseExporter {
     }
 
     @Override
-    public void export() throws IOException, SQLException, ClassNotFoundException {
+    public void export() {
         List<String> databases = config.getDb().getDatabase();
         try (Connection conn = getConnection()) {
             for (String database : databases) {
                 File markdownFile = export(conn, database);
-                log.info("导出成功 ： {}", markdownFile.getAbsolutePath());
+                log.info("Export success :{}", markdownFile.getAbsolutePath());
             }
+        } catch (SQLException | ClassNotFoundException | IOException e) {
+            log.error("Export Exception :", e);
         }
     }
 
@@ -110,10 +112,10 @@ public abstract class AbstractDatabaseExporter implements DatabaseExporter {
         try (ResultSet tableResult = ps.executeQuery()) {
             while (tableResult.next()) {
                 String tableName = tableResult.getString(1);
-                String tableComment = StringUtils.nullToBlank(tableResult.getString(2));
+                String tableComment = StringUtil.nullToBlank(tableResult.getString(2));
                 Table table = new Table();
                 table.setTableName(tableName);
-                table.setTableComment(StringUtils.replaceSep(tableComment));
+                table.setTableComment(StringUtil.replaceSep(tableComment));
                 tables.add(table);
             }
         }
@@ -133,9 +135,9 @@ public abstract class AbstractDatabaseExporter implements DatabaseExporter {
                 column.setName(resultSet.getString(2));
                 column.setDataType(resultSet.getString(3));
                 column.setAllowNull(resultSet.getString(4));
-                column.setDefaultValue(StringUtils.nullToBlank(resultSet.getString(5)));
-                String comment = StringUtils.nullToBlank(resultSet.getString(6));
-                column.setComment(StringUtils.replaceSep(comment));
+                column.setDefaultValue(StringUtil.nullToBlank(resultSet.getString(5)));
+                String comment = StringUtil.nullToBlank(resultSet.getString(6));
+                column.setComment(StringUtil.replaceSep(comment));
                 if (primaryKeyColumnNames.contains(column.getName()) && !comment.contains(primaryKeyComment)) {
                     comment = comment.length() != 0 ? primaryKeyComment + "," + comment : primaryKeyComment;
                     column.setComment(comment);
