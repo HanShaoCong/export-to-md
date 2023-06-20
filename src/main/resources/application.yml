@@ -2,12 +2,12 @@
 
 db:
   driver: com.mysql.cj.jdbc.Driver
-  url: jdbc:mysql://localhost:3306/test?useSSL=true&verifyServerCertificate=false&serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=CONVERT_TO_NULL&allowMultiQueries=true
+  url: jdbc:mysql://101.35.254.169:2206/euler_lims?useSSL=true&verifyServerCertificate=false&serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=CONVERT_TO_NULL&allowMultiQueries=true
   username: root
-  password: 123456
+  password: Hsc020517..
   # 数据库名
   database:
-    - test
+    - euler_lims
 
 
 export:
